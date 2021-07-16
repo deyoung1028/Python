@@ -6,18 +6,17 @@ for i in range(1, 13):
         pool_tables = PoolTable(i)
         pool_tables_arr.append(pool_tables)
 
-def display_open_tables():
-    for pool_table in pool_tables_arr:
-        print(f"\n Pool Table {pool_table.table_number} ------ is occupied {pool_table.is_occupied}")
 
-def display_checked_out_tables():
+def display_all_tables():
     for pool_table in pool_tables_arr:
+        if pool_table.is_occupied == False:
+          print(f"\n Pool Table {pool_table.table_number} ------ is occupied {pool_table.is_occupied}")
         if pool_table.is_occupied == True:
-            print(f"\n Pool Table {pool_table.table_number}")
-
+            print(f"\n Pool Table {pool_table.table_number} ------ is occupied {pool_table.is_occupied} ")
 
 while True:
-
+    print("\n")
+    print("\n")
     print("\t\t\t\t\tWELCOME!!!!!")
     print("\n")
     print("_____________________________________Pool Table Manager______________________________________")
@@ -36,13 +35,26 @@ while True:
 
     choice = input("Enter choice:\t")
 
-    if choice == "1":
-        display_open_tables()
+    if choice == "1": #Check out a pool table
+        display_all_tables()
         choice = int(input("Please select a table:"))
         chosen_table = pool_tables_arr[choice -1]
+        if pool_tables_arr[choice -1].is_occupied ==True:
+           print(f"!!!Uh Oh! Table number {choice} is occupied,please select another table!!")
         chosen_table.checking_out()
+        print(f"You checked out table {chosen_table.table_number} at {chosen_table.start_time}")
 
-     #if choice == "2":
+    if choice == "2": #check in a pool table
+        display_all_tables()
+        choice = int(input("Please enter the number of the table that you wish to return:"))
+        return_table = pool_tables_arr[choice -1]
+        return_table.checking_in()
+        print(f"Table {return_table.table_number} is now checked in! Total Time Played = {return_table.total_time_minutes} minutes")
+        print(f"Total Time: {self.total_time_minutes}")
+        print(f"Total Cost: $ {self.total_cost} dollars")
+
+
+
 
 
 
@@ -51,7 +63,7 @@ while True:
 
     #if choice == "4": 
 
-    if choice == "5":
-        break
+        if choice == "5":
+            break
 
     

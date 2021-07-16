@@ -19,7 +19,7 @@ while True:
     with open("favorite-dish.txt", "a") as file:
         favorite_dish = input("What is your favorite dish?  ")
         file.write(favorite_dish)
-        file.write("\n")
+        file.write("\n")#line break to make your list readable
 
 
     choice = input("enter q to quit of any key to continue:")
@@ -27,7 +27,7 @@ while True:
     if choice == "q":
         break
 
-with open("favorite-dish.txt") as file:
+with open("favorite-dish.txt") as file: #you want the read command outside of your loop
     content = file.read()
     print(content)
 
