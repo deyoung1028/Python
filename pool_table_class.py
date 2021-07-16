@@ -1,4 +1,5 @@
 from datetime import datetime 
+from datetime import date
 
 class PoolTable:
     def __init__(self, table_number):
@@ -9,6 +10,7 @@ class PoolTable:
         self.total_time = None 
         self.total_cost_per_hour = 30.0
         self.total_cost = 0.0
+
 
     def checking_out(self):
         self.is_occupied = True
@@ -22,6 +24,9 @@ class PoolTable:
         self.total_time = self.stop_time - self.start_time
         self.total_time_minutes = self.total_time.total_seconds() / 60
         self.total_cost = (self.total_cost_per_hour / 60) * self.total_time_minutes
+        
+
+  
 
         
         

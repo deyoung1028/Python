@@ -14,6 +14,12 @@ def display_all_tables():
         if pool_table.is_occupied == True:
             print(f"\n Pool Table {pool_table.table_number} ------ is occupied {pool_table.is_occupied} ")
 
+def save_to_file():
+    with open("pool_tables.txt", "w") as file:
+        for table in pool_tables_arr:
+            file.write(f'Table number: {table.table_number} | {table.start_time} | {table.stop_time} | {table.total_time} | {table.total_cost} \n')
+             
+
 while True:
     print("\n")
     print("\n")
@@ -27,11 +33,7 @@ while True:
     print("\n")
     print("2 - Check in a Pool Table")
     print("\n")
-    print("3 - Print Pool Table Usage")
-    print("\n")
-    print("4 - Print Pool Table Receipt")
-    print("\n")
-    print("5 - To Quit Application")
+    print("3 - To Quit Application")
 
     choice = input("Enter choice:\t")
 
@@ -50,20 +52,11 @@ while True:
         return_table = pool_tables_arr[choice -1]
         return_table.checking_in()
         print(f"Table {return_table.table_number} is now checked in! Total Time Played = {return_table.total_time_minutes} minutes")
-        print(f"Total Time: {self.total_time_minutes}")
-        print(f"Total Cost: $ {self.total_cost} dollars")
+        print(f"Total Cost: $ {return_table.total_cost} dollars")
+        save_to_file()
 
 
+    if choice == "3":
+        break
 
 
-
-
-
-    #if choice == "3": 
-
-    #if choice == "4": 
-
-        if choice == "5":
-            break
-
-    
